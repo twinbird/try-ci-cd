@@ -9,6 +9,13 @@ on:
         required: true
         description: A cheerful word
 jobs:
+  annotate:
+    name: アノテーションの検証
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "::notice::これはnotice"
+      - run: echo "::warning::これはwarning"
+      - run: echo "::error::これはerror"
   debug:
     name: デバッグの検証
     runs-on: ubuntu-latest
