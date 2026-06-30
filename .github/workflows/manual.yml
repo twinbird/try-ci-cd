@@ -9,6 +9,14 @@ on:
         required: true
         description: A cheerful word
 jobs:
+  summary:
+    name: ジョブサマリー
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "#サマリー" >> "${GITHUB_STEP_SUMMARY}"
+      - run: echo "- step1" >> "${GITHUB_STEP_SUMMARY}"
+      - run: echo "- step2" >> "${GITHUB_STEP_SUMMARY}"
+      - run: echo "- step3" >> "${GITHUB_STEP_SUMMARY}"
   annotate:
     name: アノテーションの検証
     runs-on: ubuntu-latest
