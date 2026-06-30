@@ -9,6 +9,15 @@ on:
         required: true
         description: A cheerful word
 jobs:
+  debug:
+    name: デバッグの検証
+    runs-on: ubuntu-latest
+    steps:
+      - name: デバッグ出力
+        run: |
+          echo "Hello"
+          echo "::debug::デバッグメッセージ"
+    
   print:
     name: 表示
     runs-on: ubuntu-latest
