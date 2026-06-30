@@ -8,6 +8,7 @@ jobs:
     timeout-minutes: 5
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello, world"
+      - run: |
+          echo "Hello, world"
+          echo "::debug::これはデバッグ用です"
       - uses: actions/checkout@v4
-
