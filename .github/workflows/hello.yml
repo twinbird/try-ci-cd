@@ -5,6 +5,7 @@ defaults:
     shell: bash
 jobs:
   hello:
+    timeout-minutes: 5
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello, world"
