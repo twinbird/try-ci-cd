@@ -3,55 +3,20 @@ run-name: Run by @${{ github.actor }}
 on:
   workflow_dispatch:
     inputs:
-      greeting:
-        type: string
-        default: Hello
-        required: true
-        description: A cheerful word
+      environment-name:
+        type: environment
+        default: test
+        required: false
+        description: Environment name
 jobs:
-  summary:
-    name: ジョブサマリー
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "#サマリー" >> "${GITHUB_STEP_SUMMARY}"
-      - run: echo "- step1" >> "${GITHUB_STEP_SUMMARY}"
-      - run: echo "- step2" >> "${GITHUB_STEP_SUMMARY}"
-      - run: echo "- step3" >> "${GITHUB_STEP_SUMMARY}"
-  annotate:
-    name: アノテーションの検証
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "::notice::これはnotice"
-      - run: echo "::warning::これはwarning"
-      - run: echo "::error::これはerror"
-  debug:
-    name: デバッグの検証
-    runs-on: ubuntu-latest
-    steps:
-      - name: デバッグ出力
-        run: |
-          echo "Hello"
-          echo "::debug::デバッグメッセージ"
-    
   print:
-    name: 表示
-    runs-on: ubuntu-latest
-    steps:
-      - name: 実行ステップ
-        run: printenv | grep 'LITERAL_'
-        env:
-          LITERAL_BOOLEAN: ${{ true }}
-          LITERAL_NUMBER: ${{ 1234 }}
-          LITERAL_STRING: ${{ 'Hello' }}
-          LITERAL_OMIT_STRING: World
-  custom-run:
     runs-on: ubuntu-latest
     env:
       USERNAME: ${{ vars.USERNAME }}
       PASSWORD: ${{ secrets.PASSWORD }}
     steps:
-      - run: echo "${{ inputs.greeting }}"
+      - run: echo "${{ inputs.environment-name }}"
       - run: echo "${USERNAME}"
       - run: echo "${PASSWORD}"
-      - run: echo "${PASSWORD:0:1}${PASSWORD#?}"
+      - run: echo "${PASSWORD:0:1} ${PASSWORD#?}"
 
