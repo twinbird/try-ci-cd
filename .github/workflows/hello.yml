@@ -11,4 +11,4 @@ jobs:
       - run: |
           echo "Hello, world"
           echo "::debug::これはデバッグ用です"
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
